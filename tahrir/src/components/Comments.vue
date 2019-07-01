@@ -15,14 +15,8 @@
 import Comment from "./Comment.vue";
 export default {
   name: "comments",
-  data: function() {
-    return { items: [] };
-  },
-  components: { Comment },
-  methods: {
-    //change items
-    getComments: function() {}
-  }
+  props: ["items"],
+  components: { Comment }
 };
 </script>
 

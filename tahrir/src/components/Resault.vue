@@ -11,7 +11,7 @@
           class="float-left"
         />
         <div class="mean">
-          <button class="btn btn-outline-primary button">نظر بدهید</button>
+          <button class="btn btn-outline-primary button" @click="commentIt(word)">نظر بدهید</button>
           <h2>{{item.mean}}</h2>
         </div>
       </div>
@@ -23,6 +23,7 @@ import StarRating from "vue-star-rating";
 
 export default {
   name: "result",
+  props: ["commentIt"],
   data: function() {
     return { word: "", items: [] };
   },

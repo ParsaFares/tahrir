@@ -3,10 +3,11 @@
     <Header/>
     <div class="container div">
       <Search name="english"/>
-      <Resault/>
+      <Resault :commentIt="this.apearCommentingArea"/>
     </div>
+    <CommentingArea v-if="this.show" :push="this.pushComment"/>
     <h4 class="text-center mb-4">نظرات کاربران</h4>
-    <Comments/>
+    <Comments :items="this.comments"/>
   </div>
 </template>
 
@@ -15,14 +16,36 @@ import Header from "./components/Header.vue";
 import Search from "./components/SearchBar.vue";
 import Resault from "./components/Resault.vue";
 import Comments from "./components/Comments.vue";
+import CommentingArea from "./components/CommentingArea.vue";
 
 export default {
   name: "app",
+  data: function() {
+    return { comments: [], commentingword: "", show: false };
+  },
   components: {
     Header,
     Search,
     Resault,
-    Comments
+    Comments,
+    CommentingArea
+  },
+  methods: {
+    pushComment: function(cm) {
+      //set commenting word in json
+      this.comments.push(cm);
+      this.show = false;
+    },
+    apearCommentingArea: function(word) {
+      this.commentingword = word;
+      this.show = true;
+    }
+  },
+  computed: {
+    //change items
+    getComments: function() {
+      return [];
+    }
   }
 };
 </script>
