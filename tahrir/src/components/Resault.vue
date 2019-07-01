@@ -1,31 +1,18 @@
 <template>
   <div class="results">
-    <h1>Hey you!</h1>
+    <h1>{{word}}</h1>
     <div>
-      <div class="meanings">
+      <div class="meanings" v-for="item of items" :key="item.id">
         <StarRating
           :star-size="28"
           :increment="0.1"
           :read-only="true"
-          :rating="4.3"
+          :rating="item.rate"
           class="float-left"
         />
         <div class="mean">
           <button class="btn btn-outline-primary button">نظر بدهید</button>
-          <h2>هی تو</h2>
-        </div>
-      </div>
-      <div class="meanings">
-        <StarRating
-          :star-size="28"
-          increment="0.1"
-          read-only="true"
-          rating="3.9"
-          class="float-left"
-        />
-        <div class="mean">
-          <button class="btn btn-outline-primary button">نظر بدهید</button>
-          <h2>با توام</h2>
+          <h2>{{item.mean}}</h2>
         </div>
       </div>
     </div>
@@ -36,8 +23,14 @@ import StarRating from "vue-star-rating";
 
 export default {
   name: "result",
+  data: function() {
+    return { word: "", items: [] };
+  },
   components: {
     StarRating
+  },
+  methods: {
+    getWord: function() {}
   }
 };
 </script>

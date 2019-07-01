@@ -1,16 +1,13 @@
 <template>
   <div class="comment card">
     <div class="header">
-      <img src="../assets/icons8-person-64.png">
-      <h3>parsa</h3>
+      <img src="../assets/icons8-person-96.png">
+      <h3>{{name}}</h3>
     </div>
     <div>
-      <h3>The word</h3>
-      <StarRating :star-size="28" :show-rating="false" :rating="4" :read-only="true"/>
-      <p>
-        baba in chie dige akheeeeee???baba in chie dige akheeeeee???
-        baba in chie dige akheeeeee???baba in chie dige akheeeeee???
-      </p>
+      <h3>{{"\"" + word + "\""}}</h3>
+      <StarRating :star-size="28" :show-rating="false" :rating="rate" :read-only="true"/>
+      <p class="float-right" style="margin:5px">{{commentBody}}</p>
     </div>
   </div>
 </template>
@@ -19,6 +16,7 @@ import StarRating from "vue-star-rating";
 
 export default {
   name: "comment",
+  props: ["name", "word", "rate", "commentBody"],
   components: {
     StarRating
   }
@@ -26,7 +24,6 @@ export default {
 </script>
 <style scoped>
 .header {
-  background-color: bisque;
   float: right;
   direction: rtl;
 }

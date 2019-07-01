@@ -1,12 +1,13 @@
 <template>
   <div>
-    <Comment/>
-    <Comment/>
-    <Comment/>
-    <Comment/>
-    <Comment/>
-    <Comment/>
-    <Comment/>
+    <Comment
+      v-for="item in items"
+      :key="item.id"
+      :name="item.name"
+      :word="item.word"
+      :commentBody="item.body"
+      :rate="item.rating"
+    />
   </div>
 </template>
 
@@ -14,7 +15,14 @@
 import Comment from "./Comment.vue";
 export default {
   name: "comments",
-  components: { Comment }
+  data: function() {
+    return { items: [] };
+  },
+  components: { Comment },
+  methods: {
+    //change items
+    getComments: function() {}
+  }
 };
 </script>
 
