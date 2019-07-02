@@ -6,7 +6,7 @@
     </div>
     <div>
       <h3>{{"\"" + word + "\""}}</h3>
-      <StarRating :star-size="28" :show-rating="false" :rating="rate" :read-only="true"/>
+      <StarRating :star-size="28" :show-rating="false" :rating="this.rate" :read-only="true"/>
       <p class="float-right" style="margin:5px">{{commentBody}}</p>
     </div>
   </div>

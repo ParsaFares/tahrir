@@ -37,6 +37,7 @@ const axios = require("axios");
 
 export default {
   name: "search",
+  props: ["setTranslations", "setLang"],
   data: function() {
     return { wordEn: "", wordFa: "" };
   },
@@ -45,9 +46,20 @@ export default {
       e.preventDefault();
       if (this.wordEn || this.wordFa) {
         axios
-          .get("http://localhost:8000/translation/get?word=s&lang=en")
-          .then(res => console.log(res))
-          .catch(res => console.log(res));
+          .get(
+            "http://localhost:8000/translation/get?" +
+              "word=" +
+              (this.wordEn ? this.wordEn : this.wordFa) +
+              "&lang=" +
+              (this.wordEn ? "en" : "fa")
+          )
+          .then(res => {
+            this.setTranslations(
+              res.data,
+              this.wordEn ? this.wordEn : this.wordFa,
+              this.wordEn ? "en" : "fa"
+            );
+          });
         return true;
       }
     }
